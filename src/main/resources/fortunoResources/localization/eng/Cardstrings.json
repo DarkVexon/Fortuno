@@ -39,5 +39,13 @@
   "${ModID}:QuickFlip": {
     "NAME": "Quick Flip",
     "DESCRIPTION": "Deal !D! damage. NL Upgrade the bottom !M! cards of your draw pile this combat."
+  },
+  "${ModID}:SetDown": {
+    "NAME": "Set Down",
+    "DESCRIPTION": "Put a card from your hand on the bottom of your draw pile. NL It costs 0 until played."
+  },
+  "${ModID}:SelfImprovement": {
+    "NAME": "Self Improvement",
+    "DESCRIPTION": "Give a card in your hand Retain and +!M! Block and Damage. NL Exhaust."
   }
 }
