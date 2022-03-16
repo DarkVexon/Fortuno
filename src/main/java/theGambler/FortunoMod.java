@@ -10,14 +10,18 @@ import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import theGambler.cards.AbstractEasyCard;
+import theGambler.cards.AbstractFortunoCard;
+import theGambler.cards.HighRoller;
 import theGambler.cards.cardvars.SecondDamage;
 import theGambler.cards.cardvars.SecondMagicNumber;
 import theGambler.relics.AbstractEasyRelic;
@@ -33,7 +37,8 @@ public class FortunoMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostPlayerUpdateSubscriber {
+        PostPlayerUpdateSubscriber,
+        PostBattleSubscriber {
 
     public static final String modID = "fortuno";
 
@@ -122,7 +127,7 @@ public class FortunoMod implements
         BaseMod.addDynamicVariable(new SecondMagicNumber());
         BaseMod.addDynamicVariable(new SecondDamage());
         new AutoAdd(modID)
-                .packageFilter(AbstractEasyCard.class)
+                .packageFilter(AbstractFortunoCard.class)
                 .setDefaultSeen(true)
                 .cards();
     }
@@ -155,5 +160,14 @@ public class FortunoMod implements
     @Override
     public void receivePostPlayerUpdate() {
         Wheel.update();
+    }
+
+    @Override
+    public void receivePostBattle(AbstractRoom abstractRoom) {
+        for (AbstractCard q : AbstractDungeon.player.masterDeck.group) {
+            if (q instanceof HighRoller) {
+                AbstractDungeon.player.gainGold(4);
+            }
+        }
     }
 }

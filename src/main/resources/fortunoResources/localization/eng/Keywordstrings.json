@@ -1,10 +1,16 @@
 [
   {
-    "PROPER_NAME": "TODO",
+    "PROPER_NAME": "Ante",
     "NAMES": [
-      "todo",
-      "todos"
+      "ante"
     ],
-    "DESCRIPTION": "TODO: Make your own epic keywords"
+    "DESCRIPTION": "This card can be put into the #gWheel at Rest Sites."
+  },
+  {
+    "PROPER_NAME": "Hit",
+    "NAMES": [
+      "hit"
+    ],
+    "DESCRIPTION": "If #gWheel activates this card, it has a bonus effect."
   }
 ]

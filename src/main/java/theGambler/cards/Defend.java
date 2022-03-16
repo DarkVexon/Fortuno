@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theGambler.FortunoMod.makeID;
 
-public class Defend extends AbstractEasyCard {
+public class Defend extends AbstractFortunoCard {
     public final static String ID = makeID("Defend");
     // intellij stuff skill, self, basic, , ,  5, 3, , 
 
@@ -15,7 +15,7 @@ public class Defend extends AbstractEasyCard {
         tags.add(CardTags.STARTER_DEFEND);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
+    public void us(AbstractPlayer p, AbstractMonster m) {
         blck();
     }
 

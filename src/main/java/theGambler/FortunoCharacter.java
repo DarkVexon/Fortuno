@@ -19,6 +19,8 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import theGambler.cards.Defend;
+import theGambler.cards.HighRoller;
+import theGambler.cards.OlFaithful;
 import theGambler.cards.Strike;
 import theGambler.relics.TodoItem;
 
@@ -76,6 +78,8 @@ public class FortunoCharacter extends CustomPlayer {
         for (int i = 0; i < 4; i++) {
             retVal.add(Defend.ID);
         }
+        retVal.add(OlFaithful.ID);
+        retVal.add(HighRoller.ID);
         return retVal;
     }
 
@@ -124,8 +128,7 @@ public class FortunoCharacter extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        System.out.println("YOU NEED TO SET getStartCardForEvent() in your " + getClass().getSimpleName() + " file!");
-        return null;
+        return new OlFaithful();
     }
 
     @Override

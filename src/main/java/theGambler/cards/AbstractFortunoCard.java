@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
@@ -24,7 +25,7 @@ import static theGambler.FortunoMod.*;
 import static theGambler.util.Wiz.atb;
 import static theGambler.util.Wiz.att;
 
-public abstract class AbstractEasyCard extends CustomCard {
+public abstract class AbstractFortunoCard extends CustomCard {
 
     protected final CardStrings cardStrings;
 
@@ -44,11 +45,13 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     private boolean needsArtRefresh = false;
 
-    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
+    public boolean calledFromWheel = false;
+
+    public AbstractFortunoCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, FortunoCharacter.Enums.GAMBLER_COLOR);
     }
 
-    public AbstractEasyCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
+    public AbstractFortunoCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target, final CardColor color) {
         super(cardID, "", getCardTextureString(cardID.replace(modID + ":", ""), type),
                 cost, "", type, color, rarity, target);
         cardStrings = CardCrawlGame.languagePack.getCardStrings(this.cardID);
@@ -247,5 +250,16 @@ public abstract class AbstractEasyCard extends CustomCard {
 
     protected void upSecondDamage(int x) {
         upgradeSecondDamage(x);
+    }
+
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        us(p, m);
+        calledFromWheel = false;
+    }
+
+    public abstract void us(AbstractPlayer p, AbstractMonster m);
+
+    public boolean canAnte() {
+        return false;
     }
 }

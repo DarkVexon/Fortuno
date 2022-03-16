@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static theGambler.FortunoMod.makeID;
 
-public class Strike extends AbstractEasyCard {
+public class Strike extends AbstractFortunoCard {
     public final static String ID = makeID("Strike");
     // intellij stuff attack, enemy, basic, 6, 3,  , , , 
 
@@ -17,8 +17,8 @@ public class Strike extends AbstractEasyCard {
         tags.add(CardTags.STARTER_STRIKE);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        dmg(m, AbstractGameAction.AttackEffect.NONE);
+    public void us(AbstractPlayer p, AbstractMonster m) {
+        dmg(m, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
     }
 
     public void upp() {

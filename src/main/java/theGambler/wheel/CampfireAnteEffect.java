@@ -17,6 +17,9 @@ import com.megacrit.cardcrawl.rooms.CampfireUI;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
+import theGambler.cards.AbstractFortunoCard;
+
+import java.util.ArrayList;
 
 public class CampfireAnteEffect extends AbstractGameEffect {
     private static final float DUR = 1.5F;
@@ -48,7 +51,15 @@ public class CampfireAnteEffect extends AbstractGameEffect {
 
         if (this.duration < 1.0F && !this.openedScreen) {
             this.openedScreen = true;
-            AbstractDungeon.gridSelectScreen.open(CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()), 1, "Choose a card to Ante.", false, false, true, true);
+            CardGroup cards = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+            for (AbstractCard q : CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()).group) {
+                if (q instanceof AbstractFortunoCard) {
+                    if (((AbstractFortunoCard) q).canAnte()) {
+                        cards.addToTop(q);
+                    }
+                }
+            }
+            AbstractDungeon.gridSelectScreen.open(cards, 1, "Choose a card to Ante.", false, false, true, true);
         }
 
         if (this.duration < 0.0F) {

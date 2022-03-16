@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import static theGambler.FortunoMod.makeID;
 
 @AutoAdd.Ignore
-public class EasyModalChoiceCard extends AbstractEasyCard {
+public class EasyModalChoiceCard extends AbstractFortunoCard {
 
     private Runnable onUseOrChosen;
     private String passedName;
