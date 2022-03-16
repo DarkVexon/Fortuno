@@ -22,5 +22,22 @@
   "${ModID}:Chatter": {
     "NAME": "Chatter",
     "DESCRIPTION": "Deal !D! damage. NL If the enemy has positive Strength, they lose !M! Strength this turn."
+  },
+  "${ModID}:UpMySleeve": {
+    "NAME": "Up My Sleeve",
+    "DESCRIPTION": "Spin the Wheel. NL If you landed on a card, add a copy of it with Retain and Exhaust into your hand.",
+    "UPGRADE_DESCRIPTION": "Spin the Wheel. NL If you landed on a card, add a copy of it with Retain and Exhaust into your hand. NL It costs 0 until played."
+  },
+  "${ModID}:Swipe": {
+    "NAME": "Swipe",
+    "DESCRIPTION": "Steal the enemy's Block. NL Apply !M! Weak."
+  },
+  "${ModID}:DoubleOrNothing": {
+    "NAME": "Double or Nothing",
+    "DESCRIPTION": "${ModID}:Ante. NL Scry !M!. NL Play the top card of your draw pile."
+  },
+  "${ModID}:QuickFlip": {
+    "NAME": "Quick Flip",
+    "DESCRIPTION": "Deal !D! damage. NL Upgrade the bottom !M! cards of your draw pile this combat."
   }
 }

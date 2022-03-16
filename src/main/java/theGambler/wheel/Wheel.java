@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theGambler.actions.RepeatCardAction;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 import static theGambler.util.Wiz.att;
 
@@ -26,6 +27,12 @@ public class Wheel {
     }
 
     public static void spin() {
+        spin(q -> {
+
+        });
+    }
+
+    public static void spin(Consumer<AbstractCard> postSpin) {
         int result = AbstractDungeon.cardRandomRng.random(slots.size() - 1);
         if (slots.get(result).isEmpty()) {
             boolean red = result % 2 == 0;
@@ -36,6 +43,7 @@ public class Wheel {
             }
         } else {
             for (AbstractCard q : slots.get(result)) {
+                postSpin.accept(q);
                 AbstractDungeon.actionManager.addToTop(new RepeatCardAction(q));
             }
         }
