@@ -21,6 +21,7 @@ import theGambler.cards.AbstractEasyCard;
 import theGambler.cards.cardvars.SecondDamage;
 import theGambler.cards.cardvars.SecondMagicNumber;
 import theGambler.relics.AbstractEasyRelic;
+import theGambler.wheel.Wheel;
 
 import java.nio.charset.StandardCharsets;
 
@@ -31,7 +32,8 @@ public class FortunoMod implements
         EditRelicsSubscriber,
         EditStringsSubscriber,
         EditKeywordsSubscriber,
-        EditCharactersSubscriber {
+        EditCharactersSubscriber,
+        PostPlayerUpdateSubscriber {
 
     public static final String modID = "fortuno";
 
@@ -148,5 +150,10 @@ public class FortunoMod implements
                 BaseMod.addKeyword(modID, keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
             }
         }
+    }
+
+    @Override
+    public void receivePostPlayerUpdate() {
+        Wheel.update();
     }
 }
