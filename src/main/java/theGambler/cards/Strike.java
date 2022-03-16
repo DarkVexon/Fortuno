@@ -17,7 +17,7 @@ public class Strike extends AbstractFortunoCard {
         tags.add(CardTags.STARTER_STRIKE);
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_VERTICAL);
     }
 

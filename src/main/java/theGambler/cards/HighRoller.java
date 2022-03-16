@@ -13,7 +13,7 @@ public class HighRoller extends AbstractFortunoCard {
         super(ID, -2, CardType.CURSE, CardRarity.BASIC, CardTarget.NONE, CardColor.CURSE);
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
     }
 
     @Override

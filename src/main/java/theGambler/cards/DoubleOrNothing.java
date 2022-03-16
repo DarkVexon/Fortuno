@@ -19,7 +19,7 @@ public class DoubleOrNothing extends AbstractFortunoCard {
         baseMagicNumber = magicNumber = 1;
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         atb(new ScryAction(magicNumber));
         atb(new PlayTopCardAction(AbstractDungeon.getRandomMonster(), false));
     }

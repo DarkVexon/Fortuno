@@ -19,7 +19,7 @@ public class QuickFlip extends AbstractFortunoCard {
         baseMagicNumber = magicNumber = 2;
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
         atb(new AbstractGameAction() {
             @Override

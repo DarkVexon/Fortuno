@@ -18,7 +18,7 @@ public class Sideye extends AbstractFortunoCard {
         baseMagicNumber = magicNumber = 3;
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         atb(new DrawCardAction(magicNumber));
         forAllMonstersLiving(q -> applyToEnemy(q, new StrengthPower(q, 1)));
     }

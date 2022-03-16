@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theGambler.FortunoCharacter;
 import theGambler.util.CardArtRoller;
+import theGambler.wheel.Wheel;
 
 import java.util.ArrayList;
 
@@ -44,8 +45,6 @@ public abstract class AbstractFortunoCard extends CustomCard {
     protected ArrayList<AbstractCard> cardToPreview = new ArrayList<>();
 
     private boolean needsArtRefresh = false;
-
-    public boolean calledFromWheel = false;
 
     public AbstractFortunoCard(final String cardID, final int cost, final CardType type, final CardRarity rarity, final CardTarget target) {
         this(cardID, cost, type, rarity, target, FortunoCharacter.Enums.GAMBLER_COLOR);
@@ -252,14 +251,11 @@ public abstract class AbstractFortunoCard extends CustomCard {
         upgradeSecondDamage(x);
     }
 
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        us(p, m);
-        calledFromWheel = false;
-    }
-
-    public abstract void us(AbstractPlayer p, AbstractMonster m);
-
     public boolean canAnte() {
         return false;
+    }
+
+    public boolean isHit() {
+        return Wheel.slots.stream().anyMatch(slot -> slot.contains(this));
     }
 }

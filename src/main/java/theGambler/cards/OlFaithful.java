@@ -19,9 +19,9 @@ public class OlFaithful extends AbstractFortunoCard {
         baseMagicNumber = magicNumber = 1;
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        if (calledFromWheel) {
+        if (isHit()) {
             applyToEnemy(m, new VulnerablePower(m, magicNumber, false));
         }
     }

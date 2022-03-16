@@ -19,7 +19,7 @@ public class Swipe extends AbstractFortunoCard {
         baseMagicNumber = magicNumber = 2;
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         if (m.currentBlock > 0) {
             int total = m.currentBlock;
             atb(new RemoveAllBlockAction(m, p));

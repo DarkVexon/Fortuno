@@ -21,7 +21,7 @@ public class UpMySleeve extends AbstractFortunoCard {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.NONE);
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         atb(new SpinWheelAction(c -> {
             AbstractCard q = c.makeStatEquivalentCopy();
             CardModifierManager.addModifier(q, new RetainMod());

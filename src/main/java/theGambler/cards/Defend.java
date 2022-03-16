@@ -15,7 +15,7 @@ public class Defend extends AbstractFortunoCard {
         tags.add(CardTags.STARTER_DEFEND);
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
     }
 

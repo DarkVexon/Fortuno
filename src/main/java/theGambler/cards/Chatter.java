@@ -20,7 +20,7 @@ public class Chatter extends AbstractFortunoCard {
         baseMagicNumber = magicNumber = 2;
     }
 
-    public void us(AbstractPlayer p, AbstractMonster m) {
+    public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_LIGHT);
         if (m.hasPower(StrengthPower.POWER_ID)) {
             if (m.getPower(StrengthPower.POWER_ID).amount > 0) {
