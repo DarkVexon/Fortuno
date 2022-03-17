@@ -47,5 +47,17 @@
   "${ModID}:SelfImprovement": {
     "NAME": "Self Improvement",
     "DESCRIPTION": "Give a card in your hand Retain and +!M! Block and Damage. NL Exhaust."
+  },
+  "${ModID}:ChipToss": {
+    "NAME": "Chip Toss",
+    "DESCRIPTION": "Deal !D! damage to a random enemy 5 times."
+  },
+  "${ModID}:WildCard": {
+    "NAME": "Wild Card",
+    "DESCRIPTION": "Choose ANY card in your master deck. NL Add a copy of it into your hand. NL Exhaust."
+  },
+  "${ModID}:FourOfAKind": {
+    "NAME": "Four of a Kind",
+    "DESCRIPTION": "Deal !D! damage. NL Four of a Kinds deal !M! additional damage this turn."
   }
 }

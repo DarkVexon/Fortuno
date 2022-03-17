@@ -42,7 +42,7 @@ public class FortunoCharacter extends CustomPlayer {
             modID + "Resources/images/char/mainChar/orb/layer3d.png",
             modID + "Resources/images/char/mainChar/orb/layer4d.png",
             modID + "Resources/images/char/mainChar/orb/layer5d.png",};
-    static final String ID = makeID("FortunoCharacter"); //TODO: Change this
+    static final String ID = makeID("FortunoCharacter");
     static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     static final String[] NAMES = characterStrings.NAMES;
     static final String[] TEXT = characterStrings.TEXT;
