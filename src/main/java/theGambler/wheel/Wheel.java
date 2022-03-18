@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -15,6 +16,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.RestRoom;
 import theGambler.actions.RepeatCardAction;
 import theGambler.util.TexLoader;
 
@@ -37,6 +40,9 @@ public class Wheel {
     private static float POSITION_X = Settings.WIDTH / 2F;
     private static float POSITION_Y = (Settings.HEIGHT / 3F) * 2;
 
+    private static float CAMPFIRE_POSITION_X = Settings.WIDTH / 2F;
+    private static float CAMPFIRE_POSITION_Y = (Settings.HEIGHT / 3F) * 2;
+
     private static float wheelAngle = 0.0F;
     private static float resultAngle = 0.0F;
     private static boolean startSpin = false;
@@ -44,11 +50,29 @@ public class Wheel {
     private static boolean doneSpinning = false;
     private static float animTimer = 2.5F;
     private static float spinVelocity = 200.0F;
-    private static float fullVelocity = 750F;
+    private static float fullVelocity = 300F;
     private static float tmpAngle;
 
     private static float phase_one_timer = 0.8F;
     private static float phase_two_timer = 1.3F;
+
+    private static float STORED_CARD_SCALE = 0.5F;
+
+    private static float CARD_RENDER_HEIGHT = ((Settings.HEIGHT / 3F) * 2) + 50;
+
+    public static final Vector2[] cardPositions = {
+            new Vector2(Settings.WIDTH / 2F + (400 * Settings.xScale), CARD_RENDER_HEIGHT),
+            new Vector2(Settings.WIDTH / 2F + (500 * Settings.xScale), CARD_RENDER_HEIGHT),
+            new Vector2(Settings.WIDTH / 2F + (600 * Settings.xScale), CARD_RENDER_HEIGHT)
+    };
+
+    private static float CAMPFIRE_CARD_RENDER_HEIGHT = ((Settings.HEIGHT / 3F) * 2) + 50;
+
+    public static final Vector2[] campCardPositions = {
+            new Vector2(218f * Settings.xScale, CARD_RENDER_HEIGHT),
+            new Vector2(293f * Settings.xScale, CARD_RENDER_HEIGHT),
+            new Vector2(368f * Settings.xScale, CARD_RENDER_HEIGHT)
+    };
 
     public static void atGameStart() {
         hbs = new ArrayList<>();
@@ -110,17 +134,28 @@ public class Wheel {
     }
 
     public static void ante(AbstractCard card, int slot) {
-        slots.get(slot).add(card.makeStatEquivalentCopy());
-    }
-
-    public static void ante(AbstractCard card) {
-        int result = AbstractDungeon.cardRandomRng.random(slots.size() - 1);
-        slots.get(result).add(card.makeStatEquivalentCopy());
+        AbstractCard q = card.makeStatEquivalentCopy();
+        q.stopGlowing();
+        q.resetAttributes();
+        q.current_x = cardPositions[slots.get(slot).size()].x;
+        q.current_y = cardPositions[slots.get(slot).size()].y;
+        q.target_x = q.current_x;
+        q.target_y = q.current_y;
+        q.drawScale = STORED_CARD_SCALE;
+        q.targetDrawScale = q.drawScale;
+        slots.get(slot).add(card);
     }
 
     public static void render(SpriteBatch sb) {
         sb.draw(wheelImg, POSITION_X - 256.0F, POSITION_Y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, Settings.scale, Settings.scale, wheelAngle, 0, 0, 512, 512, false, false);
         sb.draw(arrowImg, POSITION_X - 25F, POSITION_Y - 30F, 25, 115, 50, 230, Settings.scale, Settings.scale, 0, 0, 0, 50, 230, false, false);
+        for (int i = 0; i < slots.size(); i++) {
+            if (hbs.get((int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()))).hovered) {
+                for (AbstractCard q : slots.get(i)) {
+                    q.render(sb);
+                }
+            }
+        }
         for (Hitbox hb : hbs) {
             hb.render(sb);
         }
@@ -152,10 +187,46 @@ public class Wheel {
             for (Hitbox hb : hbs) {
                 hb.update();
             }
-            for (int i = 0; i < hbs.size(); i++) {
-                if (hbs.get(i).hovered) {
-                    int idx = (int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()));
+            for (ArrayList<AbstractCard> q : slots) {
+                for (AbstractCard c : q) {
+                    c.target_x = cardPositions[q.indexOf(c)].x;
+                    c.target_y = cardPositions[q.indexOf(c)].y;
+                    c.targetDrawScale = STORED_CARD_SCALE;
+                    c.update();
+                }
+            }
+        }
+    }
 
+    public static void renderInCamp(SpriteBatch sb) {
+        sb.draw(wheelImg, POSITION_X - 256.0F, POSITION_Y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, Settings.scale, Settings.scale, wheelAngle, 0, 0, 512, 512, false, false);
+        //sb.draw(arrowImg, POSITION_X - 25F, POSITION_Y - 30F, 25, 115, 50, 230, Settings.scale, Settings.scale, 0, 0, 0, 50, 230, false, false);
+        for (int i = 0; i < slots.size(); i++) {
+            if (hbs.get((int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()))).hovered) {
+                for (AbstractCard q : slots.get(i)) {
+                    q.render(sb);
+                }
+            }
+        }
+        for (Hitbox hb : hbs) {
+            hb.render(sb);
+        }
+    }
+
+    public static void updateInCamp(CampfireSlotInWheelEffect e) {
+        for (Hitbox hb : hbs) {
+            hb.update();
+        }
+        for (int i = 0; i < hbs.size(); i++) {
+            if (hbs.get(i).hovered) {
+                int idx = (int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()));
+                TipHelper.renderGenericTip((float) InputHelper.mX + 60.0F * Settings.scale, (float) InputHelper.mY - 50.0F * Settings.scale, "Slot " + String.valueOf(idx), "Ante this card in this slot.");
+                if (InputHelper.justClickedLeft) {
+                    ante(e.targetCard, idx);
+                    e.isDone = true;
+                    AbstractRoom.waitTimer = 0.0F;
+                    AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
+                    ((RestRoom) AbstractDungeon.getCurrRoom()).cutFireSound();
                 }
             }
         }

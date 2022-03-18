@@ -4,11 +4,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import theGambler.cards.AbstractFortunoCard;
 
 import static theGambler.FortunoMod.ANTE;
 import static theGambler.FortunoMod.makeID;
-import static theGambler.util.Wiz.*;
+import static theGambler.util.Wiz.applyToEnemy;
 
 public class OlFaithful extends AbstractFortunoCard {
     public final static String ID = makeID("OlFaithful");
@@ -28,6 +27,16 @@ public class OlFaithful extends AbstractFortunoCard {
         }
     }
 
+    @Override
+    public boolean canUpgrade() {
+        return false;
+    }
+
+    @Override
+    public void upgrade() {
+    }
+
+    @Override
     public void upp() {
     }
 

@@ -2,6 +2,7 @@ package theGambler;
 
 import basemod.AutoAdd;
 import basemod.BaseMod;
+import basemod.abstracts.CustomSavable;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -13,6 +14,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -29,6 +31,7 @@ import theGambler.relics.AbstractEasyRelic;
 import theGambler.wheel.Wheel;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 @SpireInitializer
@@ -41,7 +44,8 @@ public class FortunoMod implements
         PostPlayerUpdateSubscriber,
         PostBattleSubscriber,
         StartGameSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        CustomSavable<ArrayList<ArrayList<String>>> {
 
     public static final String modID = "fortuno";
 
@@ -186,5 +190,27 @@ public class FortunoMod implements
     @Override
     public void receivePostInitialize() {
         Wheel.atGameStart();
+    }
+
+    @Override
+    public ArrayList<ArrayList<String>> onSave() {
+        ArrayList<ArrayList<String>> retVal = new ArrayList<>();
+        for (ArrayList<AbstractCard> slot : Wheel.slots) {
+            ArrayList<String> miniRet = new ArrayList<>();
+            for (AbstractCard q : slot) {
+                miniRet.add(q.cardID);
+            }
+            retVal.add(miniRet);
+        }
+        return retVal;
+    }
+
+    @Override
+    public void onLoad(ArrayList<ArrayList<String>> arrayLists) {
+        for (int i = 0; i < arrayLists.size(); i++) {
+            for (String s : arrayLists.get(i)) {
+                Wheel.slots.get(i).add(CardLibrary.getCard(s));
+            }
+        }
     }
 }

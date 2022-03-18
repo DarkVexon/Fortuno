@@ -5,10 +5,9 @@ import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import theGambler.cards.AbstractFortunoCard;
 
 import static theGambler.FortunoMod.makeID;
-import static theGambler.util.Wiz.*;
+import static theGambler.util.Wiz.atb;
 
 public class DoubleOrNothing extends AbstractFortunoCard {
     public final static String ID = makeID("DoubleOrNothing");
@@ -29,7 +28,15 @@ public class DoubleOrNothing extends AbstractFortunoCard {
         return true;
     }
 
+    @Override
+    public boolean canUpgrade() {
+        return false;
+    }
+
+    @Override
+    public void upgrade() {
+    }
+
     public void upp() {
-        upgradeMagicNumber(1);
     }
 }

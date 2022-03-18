@@ -11,15 +11,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.CurrentScreen;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.rooms.AbstractRoom.RoomPhase;
-import com.megacrit.cardcrawl.rooms.CampfireUI;
-import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import theGambler.cards.AbstractFortunoCard;
-
-import java.util.ArrayList;
 
 public class CampfireAnteEffect extends AbstractGameEffect {
     private static final float DUR = 1.5F;
@@ -43,10 +36,10 @@ public class CampfireAnteEffect extends AbstractGameEffect {
             AbstractCard card = (AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             CardCrawlGame.metricData.addCampfireChoiceData("PURGE", card.getMetricID());
             CardCrawlGame.sound.play("CARD_EXHAUST");
-            AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(card, (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
             AbstractDungeon.player.masterDeck.removeCard(card);
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
-            Wheel.ante(card);
+            AbstractDungeon.topLevelEffects.add(new CampfireSlotInWheelEffect(card));
+            isDone = true;
         }
 
         if (this.duration < 1.0F && !this.openedScreen) {
@@ -60,15 +53,6 @@ public class CampfireAnteEffect extends AbstractGameEffect {
                 }
             }
             AbstractDungeon.gridSelectScreen.open(cards, 1, "Choose a card to Ante.", false, false, true, true);
-        }
-
-        if (this.duration < 0.0F) {
-            this.isDone = true;
-            if (CampfireUI.hidden) {
-                AbstractRoom.waitTimer = 0.0F;
-                AbstractDungeon.getCurrRoom().phase = RoomPhase.COMPLETE;
-                ((RestRoom) AbstractDungeon.getCurrRoom()).cutFireSound();
-            }
         }
     }
 
