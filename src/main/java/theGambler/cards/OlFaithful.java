@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theGambler.cards.AbstractFortunoCard;
 
+import static theGambler.FortunoMod.ANTE;
 import static theGambler.FortunoMod.makeID;
 import static theGambler.util.Wiz.*;
 
@@ -17,6 +18,7 @@ public class OlFaithful extends AbstractFortunoCard {
         super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
         baseDamage = 8;
         baseMagicNumber = magicNumber = 1;
+        tags.add(ANTE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

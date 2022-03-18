@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -38,7 +39,9 @@ public class FortunoMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostPlayerUpdateSubscriber,
-        PostBattleSubscriber {
+        PostBattleSubscriber,
+        StartGameSubscriber,
+        PostInitializeSubscriber {
 
     public static final String modID = "fortuno";
 
@@ -65,6 +68,10 @@ public class FortunoMod implements
     private static final String CARD_ENERGY_L = modID + "Resources/images/1024/energy.png";
     private static final String CHARSELECT_BUTTON = modID + "Resources/images/charSelect/charButton.png";
     private static final String CHARSELECT_PORTRAIT = modID + "Resources/images/charSelect/charBG.png";
+
+    @SpireEnum
+    public static AbstractCard.CardTags ANTE;
+
 
     public FortunoMod() {
         BaseMod.subscribe(this);
@@ -169,5 +176,15 @@ public class FortunoMod implements
                 AbstractDungeon.player.gainGold(4);
             }
         }
+    }
+
+    @Override
+    public void receiveStartGame() {
+        Wheel.init();
+    }
+
+    @Override
+    public void receivePostInitialize() {
+        Wheel.atGameStart();
     }
 }

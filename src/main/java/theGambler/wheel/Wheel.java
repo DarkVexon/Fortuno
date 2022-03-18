@@ -1,6 +1,7 @@
 package theGambler.wheel;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
@@ -9,8 +10,11 @@ import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.Hitbox;
 import theGambler.actions.RepeatCardAction;
+import theGambler.util.TexLoader;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
@@ -19,12 +23,17 @@ import static theGambler.util.Wiz.atb;
 import static theGambler.util.Wiz.att;
 
 public class Wheel {
+
+    public static Texture wheelImg = TexLoader.getTexture("fortunoResources/images/ui/Wheel.png");
+    public static Texture arrowImg = TexLoader.getTexture("fortunoResources/images/ui/Arrow.png");
+
     public static ArrayList<ArrayList<AbstractCard>> slots;
+    public static ArrayList<Hitbox> hbs;
     public static final int SLOT_NUM = 8;
     public static final int BASE_DMG_BLOCK = 4;
 
-    private static float POSITION_X = 150F;
-    private static float POSITION_Y = 150F;
+    private static float POSITION_X = Settings.WIDTH / 2F;
+    private static float POSITION_Y = (Settings.HEIGHT / 3F) * 2;
 
     private static float wheelAngle = 0.0F;
     private static float resultAngle = 0.0F;
@@ -33,7 +42,23 @@ public class Wheel {
     private static boolean doneSpinning = false;
     private static float animTimer = 2.5F;
     private static float spinVelocity = 200.0F;
+    private static float fullVelocity = 750F;
     private static float tmpAngle;
+
+    private static float phase_one_timer = 0.8F;
+    private static float phase_two_timer = 1.3F;
+
+    public static void atGameStart() {
+        hbs = new ArrayList<>();
+        hbs.add(new Hitbox(POSITION_X - 85, POSITION_Y + 85, 76, 76));
+        /*
+        for (int i = 0; i < 8; i++) {
+            float x = POSITION_X - 256F - 60 - 128F;
+            float y = POSITION_Y - 256F - 60;
+            hbs.add(new Hitbox(x, y, 60, 60));
+        }
+         */
+    }
 
     public static void init() {
         slots = new ArrayList<>();
@@ -52,8 +77,8 @@ public class Wheel {
         int result = AbstractDungeon.cardRandomRng.random(slots.size() - 1);
         resultAngle = (float) result * 60.0F + MathUtils.random(-10.0F, 10.0F);
         startSpin = true;
-        animTimer = 2.0F;
-        spinVelocity = 1500.0F;
+        animTimer = phase_one_timer;
+        spinVelocity = fullVelocity;
         atb(new AbstractGameAction() {
             @Override
             public void update() {
@@ -92,7 +117,11 @@ public class Wheel {
     }
 
     public static void render(SpriteBatch sb) {
-
+        sb.draw(wheelImg, POSITION_X - 256.0F, POSITION_Y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, Settings.scale, Settings.scale, wheelAngle, 0, 0, 512, 512, false, false);
+        sb.draw(arrowImg, POSITION_X - 25F, POSITION_Y - 30F, 25, 115, 50, 230, Settings.scale, Settings.scale, 0, 0, 0, 50, 230, false, false);
+        for (Hitbox hb : hbs) {
+            hb.render(sb);
+        }
     }
 
     public static void update() {
@@ -102,7 +131,7 @@ public class Wheel {
                 wheelAngle += spinVelocity * Gdx.graphics.getDeltaTime();
             } else {
                 finishSpin = true;
-                animTimer = 3.0F;
+                animTimer = phase_two_timer;
                 startSpin = false;
                 tmpAngle = resultAngle;
             }
@@ -110,12 +139,16 @@ public class Wheel {
             if (animTimer > 0.0F) {
                 animTimer -= Gdx.graphics.getDeltaTime();
                 if (animTimer < 0.0F) {
-                    animTimer = 1.0F;
                     finishSpin = false;
                     doneSpinning = true;
                 }
 
                 wheelAngle = Interpolation.elasticIn.apply(tmpAngle, -180.0F, animTimer / 3.0F);
+            }
+        }
+        if (!finishSpin && !startSpin) {
+            for (Hitbox hb : hbs) {
+                hb.update();
             }
         }
     }
