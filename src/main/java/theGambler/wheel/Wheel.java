@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
+import com.megacrit.cardcrawl.helpers.TipHelper;
+import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import theGambler.actions.RepeatCardAction;
 import theGambler.util.TexLoader;
 
@@ -24,7 +26,7 @@ import static theGambler.util.Wiz.att;
 
 public class Wheel {
 
-    public static Texture wheelImg = TexLoader.getTexture("fortunoResources/images/ui/Wheel.png");
+    public static Texture wheelImg = TexLoader.getTexture("fortunoResources/images/ui/DebugWheel.png");
     public static Texture arrowImg = TexLoader.getTexture("fortunoResources/images/ui/Arrow.png");
 
     public static ArrayList<ArrayList<AbstractCard>> slots;
@@ -50,14 +52,14 @@ public class Wheel {
 
     public static void atGameStart() {
         hbs = new ArrayList<>();
-        hbs.add(new Hitbox(POSITION_X - 85, POSITION_Y + 85, 76, 76));
-        /*
-        for (int i = 0; i < 8; i++) {
-            float x = POSITION_X - 256F - 60 - 128F;
-            float y = POSITION_Y - 256F - 60;
-            hbs.add(new Hitbox(x, y, 60, 60));
-        }
-         */
+        hbs.add(new Hitbox(POSITION_X - 35, POSITION_Y + 90, 76, 76));
+        hbs.add(new Hitbox(POSITION_X + 55, POSITION_Y + 50, 76, 76));
+        hbs.add(new Hitbox(POSITION_X + 95, POSITION_Y - 35, 76, 76));
+        hbs.add(new Hitbox(POSITION_X + 60, POSITION_Y - 120, 76, 76));
+        hbs.add(new Hitbox(POSITION_X - 35, POSITION_Y - 150, 76, 76));
+        hbs.add(new Hitbox(POSITION_X - 125, POSITION_Y - 120, 76, 76));
+        hbs.add(new Hitbox(POSITION_X - 165, POSITION_Y - 30, 76, 76));
+        hbs.add(new Hitbox(POSITION_X - 125, POSITION_Y + 50, 76, 76));
     }
 
     public static void init() {
@@ -75,7 +77,7 @@ public class Wheel {
 
     public static void spin(Consumer<AbstractCard> postSpin) {
         int result = AbstractDungeon.cardRandomRng.random(slots.size() - 1);
-        resultAngle = (float) result * 60.0F + MathUtils.random(-10.0F, 10.0F);
+        resultAngle = (float) result * 45.0F + MathUtils.random(-5.0F, 5.0F);
         startSpin = true;
         animTimer = phase_one_timer;
         spinVelocity = fullVelocity;
@@ -149,6 +151,12 @@ public class Wheel {
         if (!finishSpin && !startSpin) {
             for (Hitbox hb : hbs) {
                 hb.update();
+            }
+            for (int i = 0; i < hbs.size(); i++) {
+                if (hbs.get(i).hovered) {
+                    int idx = (int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()));
+
+                }
             }
         }
     }
