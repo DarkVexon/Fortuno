@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
@@ -227,6 +228,7 @@ public class Wheel {
                     AbstractRoom.waitTimer = 0.0F;
                     AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                     ((RestRoom) AbstractDungeon.getCurrRoom()).cutFireSound();
+                    CardCrawlGame.sound.play("CARD_EXHAUST");
                 }
             }
         }

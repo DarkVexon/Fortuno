@@ -46,7 +46,7 @@
   },
   "${ModID}:SelfImprovement": {
     "NAME": "Self Improvement",
-    "DESCRIPTION": "Give a card in your hand Retain and +!M! Block and Damage. NL Exhaust."
+    "DESCRIPTION": "Give a card in your hand Retain and +!M! Block and Damage this combat. NL Exhaust."
   },
   "${ModID}:ChipToss": {
     "NAME": "Chip Toss",
@@ -59,5 +59,39 @@
   "${ModID}:FourOfAKind": {
     "NAME": "Four of a Kind",
     "DESCRIPTION": "Deal !D! damage. NL Four of a Kinds deal !M! additional damage this turn."
+  },
+  "${ModID}:HeartOfTheCards": {
+    "NAME": "Heart of the Cards",
+    "DESCRIPTION": "Draw the bottom card of your draw pile. NL Give it + !M! damage this combat."
+  },
+  "${ModID}:Mulligan": {
+    "NAME": "Mulligan",
+    "DESCRIPTION": "${ModID}:Ante. NL Gain 1 Strength. NL Spin the Wheel."
+  },
+  "${ModID}:DeckDrop": {
+    "NAME": "Deck Drop",
+    "DESCRIPTION": "${ModID}:Ante. NL Deal !D! damage to a random enemy."
+  },
+  "${ModID}:NoMe": {
+    "NAME": "No, Me",
+    "DESCRIPTION": "If the enemy has positive Strength, steal up to !M! of it. NL Draw 1 card."
+  },
+  "${ModID}:HoardHarry": {
+    "NAME": "Hoard Harry",
+    "DESCRIPTION": "Deal !D! damage. NL If you have 3 or more Strength, gain !B! Block."
+  },
+  "${ModID}:ScrapShield": {
+    "NAME": "Scrap Shield",
+    "DESCRIPTION": "Gain !B! Block. NL If there are 10 or more cards in your draw pile, gain !B! Block again."
+  },
+  "${ModID}:MirrorFaced": {
+    "NAME": "Mirror Faced",
+    "DESCRIPTION": "Draw a card. NL Create a copy of it.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Create a copy of it. NL It costs 1 less."
+  },
+  "${ModID}:CasinoChaos": {
+    "NAME": "Casino Chaos",
+    "DESCRIPTION": "Whenever you play a card with 'random' in its text, deal !M! damage to a random enemy.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you play a card with 'random' in its text, deal !M! damage to a random enemy."
   }
 }

@@ -34,8 +34,6 @@ public class CampfireAnteEffect extends AbstractGameEffect {
 
         if (!AbstractDungeon.isScreenUp && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty() && AbstractDungeon.gridSelectScreen.forPurge) {
             AbstractCard card = (AbstractCard) AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-            CardCrawlGame.metricData.addCampfireChoiceData("PURGE", card.getMetricID());
-            CardCrawlGame.sound.play("CARD_EXHAUST");
             AbstractDungeon.player.masterDeck.removeCard(card);
             AbstractDungeon.gridSelectScreen.selectedCards.clear();
             AbstractDungeon.topLevelEffects.add(new CampfireSlotInWheelEffect(card));
