@@ -15,12 +15,14 @@ public class OlFaithful extends AbstractFortunoCard {
 
     public OlFaithful() {
         super(ID, 1, CardType.ATTACK, CardRarity.BASIC, CardTarget.ENEMY);
-        baseDamage = 8;
-        baseMagicNumber = magicNumber = 1;
+        baseDamage = 4;
+        baseBlock = 4;
+        baseMagicNumber = magicNumber = 2;
         tags.add(ANTE);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
+        blck();
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
         if (isHit()) {
             applyToEnemy(m, new VulnerablePower(m, magicNumber, false));

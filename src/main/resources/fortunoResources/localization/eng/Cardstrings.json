@@ -9,7 +9,7 @@
   },
   "${ModID}:OlFaithful": {
     "NAME": "Ol' Faithful",
-    "DESCRIPTION": "${ModID}:Ante. NL Deal !D! damage. NL ${ModID}:Hit: Apply !M! Vulnerable."
+    "DESCRIPTION": "${ModID}:Ante. NL Gain !B! Block. NL Deal !D! damage. NL ${ModID}:Hit: Apply !M! Vulnerable."
   },
   "${ModID}:HighRoller": {
     "NAME": "High Roller",
@@ -93,5 +93,14 @@
     "NAME": "Casino Chaos",
     "DESCRIPTION": "Whenever you play a card with 'random' in its text, deal !M! damage to a random enemy.",
     "UPGRADE_DESCRIPTION": "Innate. NL Whenever you play a card with 'random' in its text, deal !M! damage to a random enemy."
+  },
+  "${ModID}:GoldRush": {
+    "NAME": "Gold Rush",
+    "DESCRIPTION": "${ModID}:Ante. NL Deal !D! damage to a random enemy. NL Gain Gold equal to the unblocked damage dealt. NL Exhaust."
+  },
+  "${ModID}:EyesOnThePrize": {
+    "NAME": "Eyes on the Prize",
+    "DESCRIPTION": "Whenever you Spin the Wheel, draw 1 card.",
+    "UPGRADE_DESCRIPTION": "Whenever you Spin the Wheel, draw 1 card. NL Spin the Wheel."
   }
 }

@@ -17,9 +17,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import theGambler.actions.RepeatCardAction;
+import theGambler.powers.OnSpinWheelPower;
 import theGambler.util.TexLoader;
 
 import java.util.ArrayList;
@@ -132,6 +134,12 @@ public class Wheel {
                 }
             }
         });
+
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p instanceof OnSpinWheelPower) {
+                ((OnSpinWheelPower) p).onSpinWheel();
+            }
+        }
     }
 
     public static void ante(AbstractCard card, int slot) {
