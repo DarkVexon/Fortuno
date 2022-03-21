@@ -102,5 +102,29 @@
     "NAME": "Eyes on the Prize",
     "DESCRIPTION": "Whenever you Spin the Wheel, draw 1 card.",
     "UPGRADE_DESCRIPTION": "Whenever you Spin the Wheel, draw 1 card. NL Spin the Wheel."
+  },
+  "${ModID}:CollectPrizes": {
+    "NAME": "Collect Prizes",
+    "DESCRIPTION": "${ModID}:Ante. NL Deal !D! damage to a random enemy for each time you Spinned the Wheel this combat.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (Spun !${ModID}:spins! times.)"
+    ]
+  },
+  "${ModID}:DoubleDown": {
+    "NAME": "Double Down",
+    "DESCRIPTION": "Draw !M! cards. NL Copy your hand except for Double Down. NL Exhaust."
+  },
+  "${ModID}:JustAHunch": {
+    "NAME": "Just a Hunch",
+    "DESCRIPTION": "At the start of your turn, Exhaust the bottom card of your draw pile. NL If it was an Attack, gain 1 Strength. NL Otherwise, gain 1 Dexterity."
+  },
+  "${ModID}:BookieBeatdown": {
+    "NAME": "Bookie Beatdown",
+    "DESCRIPTION": "Deal !D! damage. NL Put a card from your hand on the bottom of your draw pile."
+  },
+  "${ModID}:PokerFace": {
+    "NAME": "Poker Face",
+    "DESCRIPTION": "ALL enemies lose 1 Strength. NL Gain that much Strength. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "ALL enemies lose 1 Strength. NL Gain that much Strength +1. NL Exhaust."
   }
 }

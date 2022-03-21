@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
+import theGambler.FortunoMod;
 import theGambler.actions.RepeatCardAction;
 import theGambler.powers.OnSpinWheelPower;
 import theGambler.util.TexLoader;
@@ -103,6 +104,7 @@ public class Wheel {
     }
 
     public static void spin(Consumer<AbstractCard> postSpin) {
+        FortunoMod.spinsThisCombat++;
         int result = AbstractDungeon.cardRandomRng.random(slots.size() - 1);
         resultAngle = (float) result * 45.0F + MathUtils.random(-5.0F, 5.0F);
         startSpin = true;

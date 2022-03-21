@@ -27,6 +27,7 @@ import theGambler.cards.AbstractFortunoCard;
 import theGambler.cards.HighRoller;
 import theGambler.cards.cardvars.SecondDamage;
 import theGambler.cards.cardvars.SecondMagicNumber;
+import theGambler.cards.cardvars.SpinsThisCombatVar;
 import theGambler.relics.AbstractEasyRelic;
 import theGambler.wheel.Wheel;
 
@@ -45,7 +46,8 @@ public class FortunoMod implements
         PostBattleSubscriber,
         StartGameSubscriber,
         PostInitializeSubscriber,
-        CustomSavable<ArrayList<ArrayList<String>>> {
+        CustomSavable<ArrayList<ArrayList<String>>>,
+        OnStartBattleSubscriber {
 
     public static final String modID = "fortuno";
 
@@ -137,6 +139,7 @@ public class FortunoMod implements
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new SecondMagicNumber());
         BaseMod.addDynamicVariable(new SecondDamage());
+        BaseMod.addDynamicVariable(new SpinsThisCombatVar());
         new AutoAdd(modID)
                 .packageFilter(AbstractFortunoCard.class)
                 .setDefaultSeen(true)
@@ -168,6 +171,8 @@ public class FortunoMod implements
         }
     }
 
+    public static int spinsThisCombat = 0;
+
     @Override
     public void receivePostPlayerUpdate() {
         Wheel.update();
@@ -180,6 +185,7 @@ public class FortunoMod implements
                 AbstractDungeon.player.gainGold(4);
             }
         }
+        spinsThisCombat = 0;
     }
 
     @Override
@@ -212,5 +218,10 @@ public class FortunoMod implements
                 Wheel.slots.get(i).add(CardLibrary.getCard(s));
             }
         }
+    }
+
+    @Override
+    public void receiveOnBattleStart(AbstractRoom abstractRoom) {
+        spinsThisCombat = 0;
     }
 }
