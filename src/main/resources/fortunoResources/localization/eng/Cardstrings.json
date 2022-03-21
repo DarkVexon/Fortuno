@@ -126,5 +126,64 @@
     "NAME": "Poker Face",
     "DESCRIPTION": "ALL enemies lose 1 Strength. NL Gain that much Strength. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "ALL enemies lose 1 Strength. NL Gain that much Strength +1. NL Exhaust."
+  },
+  "${ModID}:CounterfeitCards": {
+    "NAME": "Counterfeit Cards",
+    "DESCRIPTION": "Whenever you draw a non-Ethereal card, add an Ethereal duplicate into your hand."
+  },
+  "${ModID}:OrganizedHavoc": {
+    "NAME": "Organized Havoc",
+    "DESCRIPTION": "${ModID}:Ante. NL Play the bottom card of your draw pile and Exhaust it."
+  },
+  "${ModID}:TychesGift": {
+    "NAME": "Tyche's Gift",
+    "DESCRIPTION": "Discard your hand and draw that many cards. NL Gain !B! Block for each card discarded."
+  },
+  "${ModID}:CallYourBluff": {
+    "NAME": "Call Your Bluff",
+    "DESCRIPTION": "Gain !B! Block. NL Reduce the cost of the bottom card of your draw pile by 1 this combat.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Reduce the cost of the bottom card of your draw pile to 0 this combat."
+  },
+  "${ModID}:Pickpocket": {
+    "NAME": "Pick Pocket",
+    "DESCRIPTION": "Steal !M! Block from an enemy. Any excess is gained as Gold. NL Exhaust."
+  },
+  "${ModID}:AllIn": {
+    "NAME": "All In",
+    "DESCRIPTION": "Play the bottom card of your draw pile twice. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Play the bottom card of your draw pile thrice. NL Exhaust."
+  },
+  "${ModID}:Roulette": {
+    "NAME": "Roulette",
+    "DESCRIPTION": "${ModID}:Ante. NL Deal !D! damage to a random enemy !M! times. NL ${ModID}:Hit: Gain 7 Gold."
+  },
+  "${ModID}:RaiseTheStakes": {
+    "NAME": "Raise The Stakes",
+    "DESCRIPTION": "Increase the damage and Block of cards in your hand by 2. NL ALL enemies gain !M! Strength."
+  },
+  "${ModID}:TinyTells": {
+    "NAME": "Tiny Tells",
+    "DESCRIPTION": "Deal !D! damage. NL If the bottom card of your draw pile is a Skill, apply 1 Weak."
+  },
+  "${ModID}:SnakeEyes": {
+    "NAME": "Snake Eyes",
+    "DESCRIPTION": "Apply 1 Weak and Vulnerable to a random enemy !M! times. NL Exhaust."
+  },
+  "${ModID}:Boxcars": {
+    "NAME": "Boxcars",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you spin the wheel, increase this card's damage by !M! this combat."
+  },
+  "${ModID}:LuckyToken": {
+    "NAME": "Lucky Token",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you Spin the Wheel, return this from the discard pile to your hand."
+  },
+  "${ModID}:Fold": {
+    "NAME": "Fold",
+    "DESCRIPTION": "${ModID}:Ante. NL Next turn, gain [E] [E] and draw 2 cards."
+  },
+  "${ModID}:PullFromNothing": {
+    "NAME": "Pull From Nothing",
+    "DESCRIPTION": "Deal !D! damage. NL Return an Exhausted card to your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Return an Exhaust card to your hand and Upgrade it."
   }
 }

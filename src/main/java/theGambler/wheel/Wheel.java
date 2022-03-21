@@ -22,14 +22,14 @@ import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import theGambler.FortunoMod;
 import theGambler.actions.RepeatCardAction;
+import theGambler.cards.OnSpinWheelCard;
 import theGambler.powers.OnSpinWheelPower;
 import theGambler.util.TexLoader;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-import static theGambler.util.Wiz.atb;
-import static theGambler.util.Wiz.att;
+import static theGambler.util.Wiz.*;
 
 public class Wheel {
 
@@ -142,6 +142,12 @@ public class Wheel {
                 ((OnSpinWheelPower) p).onSpinWheel();
             }
         }
+
+        forAllCardsInList((c) -> {
+            if (c instanceof OnSpinWheelCard) {
+                ((OnSpinWheelCard) c).onSpinWheel();
+            }
+        }, getAllCardsInCardGroups(true, false));
     }
 
     public static void ante(AbstractCard card, int slot) {
