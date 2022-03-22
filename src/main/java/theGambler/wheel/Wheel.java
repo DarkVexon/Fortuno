@@ -139,7 +139,7 @@ public class Wheel {
 
         for (AbstractPower p : AbstractDungeon.player.powers) {
             if (p instanceof OnSpinWheelPower) {
-                ((OnSpinWheelPower) p).onSpinWheel();
+                ((OnSpinWheelPower) p).onSpinWheel(slots.get(result));
             }
         }
 
@@ -148,6 +148,10 @@ public class Wheel {
                 ((OnSpinWheelCard) c).onSpinWheel();
             }
         }, getAllCardsInCardGroups(true, false));
+    }
+
+    public static void ante(AbstractCard card) {
+        ante(card, AbstractDungeon.cardRandomRng.random(0, slots.size()-1));
     }
 
     public static void ante(AbstractCard card, int slot) {

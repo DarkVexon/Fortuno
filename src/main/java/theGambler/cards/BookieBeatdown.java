@@ -23,7 +23,7 @@ public class BookieBeatdown extends AbstractFortunoCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.BLUNT_HEAVY);
-        atb(new BotdeckAction(false));
+        atb(new BotdeckAction(1));
     }
 
     public void upp() {

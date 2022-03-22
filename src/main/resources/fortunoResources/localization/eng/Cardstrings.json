@@ -185,5 +185,50 @@
     "NAME": "Pull From Nothing",
     "DESCRIPTION": "Deal !D! damage. NL Return an Exhausted card to your hand.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Return an Exhaust card to your hand and Upgrade it."
+  },
+  "${ModID}:BetOnOdds": {
+    "NAME": "Bet On Odds",
+    "DESCRIPTION": "Whenever you draw an odd-cost card, shuffle an Ethereal copy that costs !M! less into your draw pile."
+  },
+  "${ModID}:BetOnEvens": {
+    "NAME": "Bet On Evens",
+    "DESCRIPTION": "Whenever you draw an even-cost card, gain 2 Block.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you draw an even-cost card, gain 2 Block."
+  },
+  "${ModID}:QuickStopShop": {
+    "NAME": "Quick Stop Shop",
+    "DESCRIPTION": "Pay !M! Gold. NL Choose one: Obtain a random potion, an additional card reward, or ALL enemies lose 13 HP. NL Exhaust."
+  },
+  "${ModID}:Jackpot": {
+    "NAME": "JACKPOT!!!",
+    "DESCRIPTION": "${ModID}:Ante. NL Deal !D! damage to a random enemy. NL ${ModID}:Hit: Deal !${ModID}:sd! damage to a random non-Boss enemy."
+  },
+  "${ModID}:BlindCall": {
+    "NAME": "Blind Call",
+    "DESCRIPTION": "Become Confused. Gain [E] [E] next turn.",
+    "UPGRADE_DESCRIPTION": "Become Confused. Gain [E] [E] [E] next turn."
+  },
+  "${ModID}:OnTheHouse": {
+    "NAME": "On the House",
+    "DESCRIPTION": "Deal !D! damage !M! times. NL Ante a card from your hand. NL Can be Upgraded any number of times."
+  },
+  "${ModID}:BlueChipBarrier": {
+    "NAME": "Blue Chip Barrier",
+    "DESCRIPTION": "Whenever you gain Gold during combat, gain that much Block. NL Gain 5 Gold."
+  },
+  "${ModID}:CountingCards": {
+    "NAME": "Counting Cards",
+    "DESCRIPTION": "At the start of your turn, draw a card, then put a card from your hand on the bottom of your draw pile.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the start of your turn, draw a card, then put a card from your hand on the bottom of your draw pile."
+  },
+  "${ModID}:EyeFromAbove": {
+    "NAME": "Eye From Above",
+    "DESCRIPTION": "The next time you spin the Wheel and land on cards, play them twice.",
+    "UPGRADE_DESCRIPTION": "The next !M! times you spin the Wheel and land on cards, play them twice."
+  },
+  "${ModID}:LuxuriousLifestyle": {
+    "NAME": "Luxurious Lifestyle",
+    "DESCRIPTION": "Gain !M! * X Gold. NL ALL enemies gain X Strength and X Vulnerable. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !M! * X Gold. NL ALL enemies gain X Strength and X+1 Vulnerable. NL Exhaust."
   }
 }
