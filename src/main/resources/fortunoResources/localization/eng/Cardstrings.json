@@ -223,8 +223,8 @@
   },
   "${ModID}:EyeFromAbove": {
     "NAME": "Eye From Above",
-    "DESCRIPTION": "The next time you spin the Wheel and land on cards, play them twice.",
-    "UPGRADE_DESCRIPTION": "The next !M! times you spin the Wheel and land on cards, play them twice."
+    "DESCRIPTION": "The next time you spin the Wheel, its effects happen twice.",
+    "UPGRADE_DESCRIPTION": "The next !M! times you spin the Wheel, its effects happen twice."
   },
   "${ModID}:LuxuriousLifestyle": {
     "NAME": "Luxurious Lifestyle",
@@ -254,5 +254,28 @@
   "${ModID}:HeavyHit": {
     "NAME": "Heavy Hit",
     "DESCRIPTION": "Deal !D! damage. NL Whenever you Spin the Wheel, this costs 1 less this combat."
+  },
+  "${ModID}:AnotherHit": {
+    "NAME": "Another Hit",
+    "DESCRIPTION": "Deal !D! damage. NL If the bottom card of your deck is an Attack, play it."
+  },
+  "${ModID}:GalacticGamble": {
+    "NAME": "Galactic Gamble",
+    "DESCRIPTION": "Exhaust all cards in your hand and replace them with random ones from other colors. NL They cost 0. NL Exhaust.",
+    "UPGRADED_DESCRIPTION": "Exhaust all cards in your hand and replace them with random Upgraded ones from other colors. NL They cost 0. NL Exhaust."
+  },
+  "${ModID}:CallousClub": {
+    "NAME": "Callous Club",
+    "DESCRIPTION": "Whenever you Spin the Wheel, its effects happen twice. NL Remove struck cards from the Wheel permanently.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Whenever you Spin the Wheel, its effects happen twice. NL Remove struck cards from the Wheel permanently."
+  },
+  "${ModID}:HeftyHeart": {
+    "NAME": "Hefty Heart",
+    "DESCRIPTION": "${ModID}:Ante. NL Increase the damage, Block and special effects of cards in your hand by 1. NL Gain !M! Temporary_HP. NL Exhaust."
+  },
+  "${ModID}:MorosGift": {
+    "NAME": "Moro's Gift",
+    "DESCRIPTION": "Pay !M! Gold. NL Choose to either find two cards from your draw pile or add 3 random cards into your hand, and they cost 0. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Pay !M! Gold. NL Choose to either find two cards from your draw pile or add 3 random cards into your hand, and they cost 0."
   }
 }

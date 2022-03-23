@@ -17,7 +17,7 @@ public class EyesOnThePrizePower extends AbstractEasyPower implements OnSpinWhee
     }
 
     @Override
-    public void onSpinWheel(ArrayList<AbstractCard> results) {
+    public void onSpinWheel(ArrayList<AbstractCard> results, boolean red) {
         flash();
         addToBot(new DrawCardAction(amount));
     }

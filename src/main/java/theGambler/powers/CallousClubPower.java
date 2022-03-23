@@ -2,13 +2,12 @@ package theGambler.powers;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import theGambler.actions.RepeatCardAction;
+import theGambler.wheel.Wheel;
 
 import java.util.ArrayList;
 
@@ -16,20 +15,22 @@ import static theGambler.FortunoMod.makeID;
 import static theGambler.util.Wiz.att;
 import static theGambler.wheel.Wheel.BASE_DMG_BLOCK;
 
-public class EyeFromAbovePower extends AbstractEasyPower implements OnSpinWheelPower {
-    public static String ID = makeID(EyeFromAbovePower.class.getSimpleName());
+public class CallousClubPower extends AbstractEasyPower implements OnSpinWheelPower {
+    public static String ID = makeID(CallousClubPower.class.getSimpleName());
 
-    public EyeFromAbovePower(int amount) {
-        super("Eye From Above", PowerType.BUFF, false, AbstractDungeon.player, amount);
+    public CallousClubPower(int amount) {
+        super("Callous Club", PowerType.BUFF, false, AbstractDungeon.player, amount);
     }
 
     @Override
     public void onSpinWheel(ArrayList<AbstractCard> results, boolean red) {
         flash();
         if (!results.isEmpty()) {
-            for (AbstractCard q : results) {
-                AbstractDungeon.actionManager.addToTop(new RepeatCardAction(q));
-            }
+            for (int i = 0; i < amount; i++)
+                for (AbstractCard q : results) {
+                    AbstractDungeon.actionManager.addToTop(new RepeatCardAction(q));
+                }
+            Wheel.slots.get(Wheel.slots.indexOf(results)).clear();
         }
         else {
             if (red) {
@@ -38,11 +39,14 @@ public class EyeFromAbovePower extends AbstractEasyPower implements OnSpinWheelP
                 att(new GainBlockAction(AbstractDungeon.player, BASE_DMG_BLOCK));
             }
         }
-        addToBot(new ReducePowerAction(owner, owner, this, 1));
     }
 
     @Override
     public void updateDescription() {
-        description = "The next #b" + amount + (amount == 1 ? " time" : " times") + " you #gSpin #gthe #gWheel and land on cards, repeat their effects.";
+        if (amount == 1)
+            description = "Whenever you #gSpin #gthe #gWheel and land on cards, repeat their effects and #rpermanently #rremove #rthem.";
+        else {
+            description = "Whenever you #gSpin #gthe #gWheel and land on cards, repeat their effects #b" + amount + " times and #rpermanently #rremove #rthem.";
+        }
     }
 }

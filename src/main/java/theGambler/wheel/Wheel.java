@@ -139,7 +139,7 @@ public class Wheel {
 
         for (AbstractPower p : AbstractDungeon.player.powers) {
             if (p instanceof OnSpinWheelPower) {
-                ((OnSpinWheelPower) p).onSpinWheel(slots.get(result));
+                ((OnSpinWheelPower) p).onSpinWheel(slots.get(result), result % 2 == 0);
             }
         }
 
