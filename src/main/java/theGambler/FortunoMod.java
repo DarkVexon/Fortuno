@@ -15,10 +15,13 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.Circlet;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -223,5 +226,33 @@ public class FortunoMod implements
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
         spinsThisCombat = 0;
+    }
+
+    public static AbstractRelic returnTrueRandomScreenlessRelic() {
+        ArrayList<AbstractRelic> eligibleRelicsList = new ArrayList<>();
+        ArrayList<AbstractRelic> myGoodStuffList = new ArrayList<>();
+        for (String r : AbstractDungeon.commonRelicPool) {
+            eligibleRelicsList.add(RelicLibrary.getRelic(r));
+        }
+        for (String r : AbstractDungeon.uncommonRelicPool) {
+            eligibleRelicsList.add(RelicLibrary.getRelic(r));
+        }
+        for (String r : AbstractDungeon.rareRelicPool) {
+            eligibleRelicsList.add(RelicLibrary.getRelic(r));
+        }
+        try {
+            for (AbstractRelic r : eligibleRelicsList)
+                if (r.getClass().getMethod("onEquip").getDeclaringClass() == AbstractRelic.class && r.getClass().getMethod("onUnequip").getDeclaringClass() == AbstractRelic.class) {
+                    myGoodStuffList.add(r);
+                }
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        if (myGoodStuffList.isEmpty()) {
+            return new Circlet();
+        } else {
+            myGoodStuffList.removeIf(r -> AbstractDungeon.player.hasRelic(r.relicId));
+            return myGoodStuffList.get(AbstractDungeon.cardRandomRng.random(myGoodStuffList.size() - 1));
+        }
     }
 }

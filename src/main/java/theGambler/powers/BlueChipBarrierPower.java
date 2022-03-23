@@ -9,7 +9,7 @@ public class BlueChipBarrierPower extends AbstractEasyPower implements OnGainGol
     public static String ID = makeID(BlueChipBarrierPower.class.getSimpleName());
 
     public BlueChipBarrierPower(int amount) {
-        super("BlueChipBarrier", PowerType.BUFF, false, AbstractDungeon.player, amount);
+        super("Blue Chip Barrier", PowerType.BUFF, false, AbstractDungeon.player, amount);
     }
 
     @Override

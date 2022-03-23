@@ -17,7 +17,7 @@
   },
   "${ModID}:Sideye": {
     "NAME": "Side-eye",
-    "DESCRIPTION": "Draw !M! cards. NL ALL enemies gain 1 Strength."
+    "DESCRIPTION": "Draw !M! cards. NL Enemies gain 1 Strength."
   },
   "${ModID}:Chatter": {
     "NAME": "Chatter",
@@ -159,7 +159,7 @@
   },
   "${ModID}:RaiseTheStakes": {
     "NAME": "Raise The Stakes",
-    "DESCRIPTION": "Increase the damage and Block of cards in your hand by 2. NL ALL enemies gain !M! Strength."
+    "DESCRIPTION": "Increase the damage and Block of cards in your hand by 2. NL Enemies gain !M! Strength."
   },
   "${ModID}:TinyTells": {
     "NAME": "Tiny Tells",
@@ -228,7 +228,31 @@
   },
   "${ModID}:LuxuriousLifestyle": {
     "NAME": "Luxurious Lifestyle",
-    "DESCRIPTION": "Gain !M! * X Gold. NL ALL enemies gain X Strength and X Vulnerable. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Gain !M! * X Gold. NL ALL enemies gain X Strength and X+1 Vulnerable. NL Exhaust."
+    "DESCRIPTION": "Gain !M! * X Gold. NL Enemies gain X Strength and X Vulnerable. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Gain !M! * X Gold. NL Enemies gain X Strength and X+1 Vulnerable. NL Exhaust."
+  },
+  "${ModID}:MatchingCall": {
+    "NAME": "Matching Call",
+    "DESCRIPTION": "Whenever an enemy gains Strength, gain that much Strength.",
+    "UPGRADE_DESCRIPTION": "Whenever an enemy gains Strength, gain twice that much Strength."
+  },
+  "${ModID}:CasinoLights": {
+    "NAME": "Casino Lights",
+    "DESCRIPTION": "Gain [E] [E]. NL Enemies gain 1 Strength.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E] [E]. NL Enemies gain 1 Strength."
+  },
+  "${ModID}:CurioCollection": {
+    "NAME": "Curio Collection",
+    "DESCRIPTION": "Pay !M! Gold. NL Gain a Relic. NL Fleeting.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Pay !M! Gold. NL Gain a Relic. NL Purge."
+  },
+  "${ModID}:TuneUp": {
+    "NAME": "Tune Up",
+    "DESCRIPTION": "Pay !M! Gold. NL Increase the damage and Block of cards in your hand by 2 permanently. NL Fleeting.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Pay !M! Gold. NL Draw 1 card. NL Increase the damage and Block of cards in your hand by 2 permanently. NL Fleeting."
+  },
+  "${ModID}:HeavyHit": {
+    "NAME": "Heavy Hit",
+    "DESCRIPTION": "Deal !D! damage. NL Whenever you Spin the Wheel, this costs 1 less this combat."
   }
 }
