@@ -171,7 +171,8 @@ public class Wheel {
         sb.draw(wheelImg, POSITION_X - 256.0F, POSITION_Y - 256.0F, 256.0F, 256.0F, 512.0F, 512.0F, Settings.scale, Settings.scale, wheelAngle, 0, 0, 512, 512, false, false);
         sb.draw(arrowImg, POSITION_X - 25F, POSITION_Y - 30F, 25, 115, 50, 230, Settings.scale, Settings.scale, 0, 0, 0, 50, 230, false, false);
         for (int i = 0; i < slots.size(); i++) {
-            if (hbs.get((int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()))).hovered) {
+            int idx = (int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()));
+            if (hbs.get(idx).hovered) {
                 for (AbstractCard q : slots.get(i)) {
                     q.render(sb);
                 }

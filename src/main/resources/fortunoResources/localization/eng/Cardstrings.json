@@ -271,11 +271,15 @@
   },
   "${ModID}:HeftyHeart": {
     "NAME": "Hefty Heart",
-    "DESCRIPTION": "${ModID}:Ante. NL Increase the damage, Block and special effects of cards in your hand by 1. NL Gain !M! Temporary_HP. NL Exhaust."
+    "DESCRIPTION": "${ModID}:Ante. NL Increase the damage, Block and special effects of cards in your hand by 1 this combat. NL Gain !M! Temporary_HP. NL Exhaust."
   },
   "${ModID}:MorosGift": {
     "NAME": "Moro's Gift",
     "DESCRIPTION": "Pay !M! Gold. NL Choose to either find two cards from your draw pile or add 3 random cards into your hand, and they cost 0. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Pay !M! Gold. NL Choose to either find two cards from your draw pile or add 3 random cards into your hand, and they cost 0."
+  },
+  "${ModID}:FullHouse": {
+    "NAME": "Full House",
+    "DESCRIPTION": "If you draw two or more of the same card at the start of your turn, give them !M! increased damage and Block this combat."
   }
 }
