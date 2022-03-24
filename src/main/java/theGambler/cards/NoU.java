@@ -1,5 +1,6 @@
 package theGambler.cards;
 
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -19,12 +20,7 @@ public class NoU extends AbstractFortunoCard {
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {
-        applyToSelf(new LambdaPower("No U", AbstractPower.PowerType.BUFF, false, p, 1) {
-            @Override
-            public void updateDescription() {
-                description = amount == 1 ? "Reflect all blocked damage." : ("When you block damage, deal that much damage back #b" + amount + " times.");
-            }
-        });
+
     }
 
     public void upp() {

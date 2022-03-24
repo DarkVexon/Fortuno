@@ -226,6 +226,7 @@ public class FortunoMod implements
     @Override
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
         spinsThisCombat = 0;
+        fortunosSleeve.clear();
     }
 
     public static AbstractRelic returnTrueRandomScreenlessRelic() {
@@ -255,4 +256,6 @@ public class FortunoMod implements
             return myGoodStuffList.get(AbstractDungeon.cardRandomRng.random(myGoodStuffList.size() - 1));
         }
     }
+
+    public static ArrayList<AbstractCard> fortunosSleeve = new ArrayList<>();
 }
