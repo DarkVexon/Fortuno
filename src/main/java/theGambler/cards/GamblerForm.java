@@ -17,7 +17,7 @@ public class GamblerForm extends AbstractFortunoCard {
     // intellij stuff power, self, rare, , , , , 5, 5
 
     public GamblerForm() {
-        super(ID, 4, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 3, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 5;
     }
 

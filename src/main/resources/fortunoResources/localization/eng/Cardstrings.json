@@ -46,7 +46,7 @@
   },
   "${ModID}:SelfImprovement": {
     "NAME": "Self Improvement",
-    "DESCRIPTION": "Give a card in your hand Retain and +!M! Block and Damage this combat. NL Exhaust."
+    "DESCRIPTION": "Give a card in your hand Retain and + !M! Block and Damage this combat. NL Exhaust."
   },
   "${ModID}:ChipToss": {
     "NAME": "Chip Toss",
@@ -281,5 +281,30 @@
   "${ModID}:FullHouse": {
     "NAME": "Full House",
     "DESCRIPTION": "If you draw two or more of the same card at the start of your turn, give them !M! increased damage and Block this combat."
+  },
+  "${ModID}:CalledIt": {
+    "NAME": "Called It",
+    "DESCRIPTION": "Deal !D! damage. NL Guess a card type, then draw the bottom card of your draw pile. NL If you guessed correctly, deal !D! damage again."
+  },
+  "${ModID}:StarchipStalwart": {
+    "NAME": "Starchip Stalwart",
+    "DESCRIPTION": "${ModID}:Ante. NL Gain !B! Block. NL ${ModID}:Hit: Increase this card's Block by !M! permanently."
+  },
+  "${ModID}:GamblerForm": {
+    "NAME": "Gambler Form",
+    "DESCRIPTION": "At the start of your turn, Spin the Wheel and gain !M! Gold."
+  },
+  "${ModID}:NoU": {
+    "NAME": "No, U",
+    "DESCRIPTION": "Ethereal. NL Reflect all blocked damage.",
+    "UPGRADE_DESCRIPTION": "Reflect all blocked damage."
+  },
+  "${ModID}:SlickSpade": {
+    "NAME": "Slick Spade",
+    "DESCRIPTION": "Deal !D! damage. NL If Fatal, ${ModID}:Ante a random card with *Ante in your deck permanently."
+  },
+  "${ModID}:SmartInvestment": {
+    "NAME": "Smart Investment",
+    "DESCRIPTION": "${ModID}:Ante. NL Put a *Pile *Of *Gold on the bottom of your draw pile. NL Exhaust."
   }
 }
