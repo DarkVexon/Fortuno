@@ -318,5 +318,10 @@
   "${ModID}:FortunoCoin": {
     "NAME": "FortunoCoin!",
     "DESCRIPTION": "When you go to the next act, remove this from your deck and gain !M! Gold."
+  },
+  "${ModID}:DiamondDagger": {
+    "NAME": "Diamond Dagger",
+    "DESCRIPTION": "Deal !D! damage. NL Choose where the Wheel will next land. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Choose where the Wheel will next land."
   }
 }

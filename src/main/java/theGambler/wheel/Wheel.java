@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -23,6 +24,7 @@ import com.megacrit.cardcrawl.rooms.RestRoom;
 import theGambler.FortunoMod;
 import theGambler.actions.RepeatCardAction;
 import theGambler.cards.OnSpinWheelCard;
+import theGambler.powers.DiamondDaggerPower;
 import theGambler.powers.OnSpinWheelPower;
 import theGambler.util.TexLoader;
 
@@ -63,6 +65,8 @@ public class Wheel {
     private static float STORED_CARD_SCALE = 0.5F;
 
     private static float CARD_RENDER_HEIGHT = ((Settings.HEIGHT / 3F) * 2) + 50;
+
+    public static boolean choosingForDiamondDagger = false;
 
     public static final Vector2[] cardPositions = {
             new Vector2(Settings.WIDTH / 2F + (400 * Settings.xScale), CARD_RENDER_HEIGHT),
@@ -105,7 +109,7 @@ public class Wheel {
 
     public static void spin(Consumer<AbstractCard> postSpin) {
         FortunoMod.spinsThisCombat++;
-        int result = AbstractDungeon.cardRandomRng.random(slots.size() - 1);
+        int result = AbstractDungeon.player.hasPower(DiamondDaggerPower.ID) ? AbstractDungeon.player.getPower(DiamondDaggerPower.ID).amount : AbstractDungeon.cardRandomRng.random(slots.size() - 1);
         resultAngle = (float) result * 45.0F + MathUtils.random(-5.0F, 5.0F);
         startSpin = true;
         animTimer = phase_one_timer;
@@ -151,7 +155,7 @@ public class Wheel {
     }
 
     public static void ante(AbstractCard card) {
-        ante(card, AbstractDungeon.cardRandomRng.random(0, slots.size()-1));
+        ante(card, AbstractDungeon.cardRandomRng.random(0, slots.size() - 1));
     }
 
     public static void ante(AbstractCard card, int slot) {
@@ -218,6 +222,9 @@ public class Wheel {
                     c.update();
                 }
             }
+            if (choosingForDiamondDagger) {
+                diamondDaggerChoice();
+            }
         }
     }
 
@@ -251,6 +258,20 @@ public class Wheel {
                     AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
                     ((RestRoom) AbstractDungeon.getCurrRoom()).cutFireSound();
                     CardCrawlGame.sound.play("CARD_EXHAUST");
+                }
+            }
+        }
+    }
+
+    public static void diamondDaggerChoice() {
+        for (int i = 0; i < hbs.size(); i++) {
+            if (hbs.get(i).hovered) {
+                int idx = (int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()));
+                TipHelper.renderGenericTip((float) InputHelper.mX + 60.0F * Settings.scale, (float) InputHelper.mY - 50.0F * Settings.scale, "Slot " + idx, "Guarantee the Wheel lands on this slot next.");
+                if (InputHelper.justClickedLeft) {
+                    AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DiamondDaggerPower(idx), idx));
+                    AbstractDungeon.actionManager.actions.get(0).isDone = true;
+                    choosingForDiamondDagger = false;
                 }
             }
         }
