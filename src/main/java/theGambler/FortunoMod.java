@@ -28,6 +28,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theGambler.cards.AbstractFortunoCard;
 import theGambler.cards.HighRoller;
+import theGambler.cards.OnChangeActCard;
 import theGambler.cards.cardvars.SecondDamage;
 import theGambler.cards.cardvars.SecondMagicNumber;
 import theGambler.cards.cardvars.SpinsThisCombatVar;
@@ -50,7 +51,8 @@ public class FortunoMod implements
         StartGameSubscriber,
         PostInitializeSubscriber,
         CustomSavable<ArrayList<ArrayList<String>>>,
-        OnStartBattleSubscriber {
+        OnStartBattleSubscriber,
+        StartActSubscriber {
 
     public static final String modID = "fortuno";
 
@@ -258,4 +260,13 @@ public class FortunoMod implements
     }
 
     public static ArrayList<AbstractCard> fortunosSleeve = new ArrayList<>();
+
+    @Override
+    public void receiveStartAct() {
+        for (AbstractCard q : AbstractDungeon.player.masterDeck.group) {
+            if (q instanceof OnChangeActCard) {
+                ((OnChangeActCard) q).onChangeAct();
+            }
+        }
+    }
 }

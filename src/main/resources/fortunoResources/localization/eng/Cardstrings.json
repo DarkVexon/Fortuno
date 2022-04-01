@@ -309,10 +309,14 @@
   },
   "${ModID}:AceInTheSleeve": {
     "NAME": "Ace in the Sleeve",
-    "DESCRIPTION": "Put all your cards up your sleeve. NL Draw !M! cards."
+    "DESCRIPTION": "Put the cards in your hand up your sleeve. NL Draw !M! cards."
   },
   "${ModID}:FortunosSleeve":{
     "NAME": "Fortuno's Sleeve",
     "DESCRIPTION": "Increase the damage and block of ALL cards in your sleeve by 2. NL Play a card in your sleeve, then return this to your hand."
+  },
+  "${ModID}:FortunoCoin": {
+    "NAME": "FortunoCoin!",
+    "DESCRIPTION": "When you go to the next act, remove this from your deck and gain !M! Gold."
   }
 }
