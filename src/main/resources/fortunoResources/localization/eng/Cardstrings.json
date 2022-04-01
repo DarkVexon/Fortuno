@@ -288,7 +288,7 @@
   },
   "${ModID}:StarchipStalwart": {
     "NAME": "Starchip Stalwart",
-    "DESCRIPTION": "${ModID}:Ante. NL Gain !B! Block. NL ${ModID}:Hit: Increase this card's Block by !M! permanently."
+    "DESCRIPTION": "${ModID}:Ante. NL Gain !B! Block. NL ${ModID}:Hit: Apply 1 Weak to ALL enemies."
   },
   "${ModID}:GamblerForm": {
     "NAME": "Gambler Form",

@@ -2,6 +2,7 @@ package theGambler.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import theGambler.cards.AbstractFortunoCard;
 
 import static theGambler.FortunoMod.makeID;
@@ -20,7 +21,7 @@ public class StarchipStalwart extends AbstractFortunoCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         blck();
         if (isHit()) {
-
+            forAllMonstersLiving(q -> applyToEnemy(q, new WeakPower(q, 1, false)));
         }
     }
 

@@ -37,6 +37,8 @@ public class AllIn extends AbstractFortunoCard {
                     this.isDone = true;
                     return;
                 }
+
+                isDone = true;
             }
         });
         atb(new AbstractGameAction() {
