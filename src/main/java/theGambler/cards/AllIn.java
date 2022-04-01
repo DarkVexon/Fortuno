@@ -18,7 +18,7 @@ public class AllIn extends AbstractFortunoCard {
     // intellij stuff skill, self, , , , , , 1, 1
 
     public AllIn() {
-        super(ID, 3, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, 3, CardType.SKILL, CardRarity.RARE, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
         exhaust = true;
     }

@@ -24,6 +24,7 @@ public class CallYourBluff extends AbstractFortunoCard {
         atb(new AbstractGameAction() {
             @Override
             public void update() {
+                isDone = true;
                 if (!AbstractDungeon.player.drawPile.isEmpty()) {
                     AbstractCard q = AbstractDungeon.player.drawPile.getBottomCard();
                     q.updateCost(upgraded ? -999 : -1);

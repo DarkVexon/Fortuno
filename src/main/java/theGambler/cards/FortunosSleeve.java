@@ -21,7 +21,7 @@ public class FortunosSleeve extends AbstractFortunoCard {
     // intellij stuff skill, self, special, , , , , , 
 
     public FortunosSleeve() {
-        super(ID, 1, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

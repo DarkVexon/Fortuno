@@ -13,7 +13,7 @@ public class PileOfGold extends AbstractFortunoCard {
     // intellij stuff skill, self, special, , , , , 30, 10
 
     public PileOfGold() {
-        super(ID, 1, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF);
+        super(ID, 1, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
         baseMagicNumber = magicNumber = 30;
         exhaust = true;
     }

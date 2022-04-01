@@ -323,5 +323,13 @@
     "NAME": "Diamond Dagger",
     "DESCRIPTION": "Deal !D! damage. NL Choose where the Wheel will next land. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage. NL Choose where the Wheel will next land."
+  },
+  "${ModID}:PileOfGold": {
+    "NAME": "Pile of Gold",
+    "DESCRIPTION": "Gain !M! Gold. NL Exhaust."
+  },
+  "${ModID}:RiggedDeck": {
+    "NAME": "Rigged Deck",
+    "DESCRIPTION": "Choose a card in your hand to draw all copies of. NL Increase their damage and Block by 2."
   }
 }
