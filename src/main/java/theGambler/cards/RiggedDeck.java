@@ -2,6 +2,7 @@ package theGambler.cards;
 
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -24,12 +25,18 @@ public class RiggedDeck extends AbstractFortunoCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         atb(new SelectCardsInHandAction("to Rigged Deck.", (cards) -> {
             AbstractCard tar = cards.get(0);
-            for (AbstractCard q : Wiz.getAllCardsInCardGroups(true, false)) {
-                if (q.cardID.equals(tar.cardID)) {
-                    CardModifierManager.addModifier(q, new DamageBlockUpMod(2));
-                    q.superFlash();
+            att(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    isDone = true;
+                    for (AbstractCard q : Wiz.getAllCardsInCardGroups(true, false)) {
+                        if (q.cardID.equals(tar.cardID)) {
+                            CardModifierManager.addModifier(q, new DamageBlockUpMod(2));
+                            q.superFlash();
+                        }
+                    }
                 }
-            }
+            });
             att(new DrawSpecificIDCardAction(tar.cardID));
         }));
     }

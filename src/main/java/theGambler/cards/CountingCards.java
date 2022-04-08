@@ -16,7 +16,7 @@ public class CountingCards extends AbstractFortunoCard {
     // intellij stuff rare, self, rare, , , , , , 
 
     public CountingCards() {
-        super(ID, 1, CardType.ATTACK, CardRarity.RARE, CardTarget.SELF);
+        super(ID, 1, CardType.POWER, CardRarity.RARE, CardTarget.SELF);
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

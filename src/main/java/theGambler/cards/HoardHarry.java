@@ -31,7 +31,7 @@ public class HoardHarry extends AbstractFortunoCard {
     private static boolean strengthCheck() {
         if (AbstractDungeon.player.hasPower(StrengthPower.POWER_ID)) {
             int x = AbstractDungeon.player.getPower(StrengthPower.POWER_ID).amount;
-            if (x > 3) {
+            if (x >= 3) {
                 return true;
             }
         }

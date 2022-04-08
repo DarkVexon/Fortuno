@@ -28,6 +28,7 @@ public class JustAHunch extends AbstractFortunoCard {
 
             @Override
             public void atStartOfTurnPostDraw() {
+                int x = this.amount;
                 atb(new AbstractGameAction() {
                     @Override
                     public void update() {
@@ -36,9 +37,9 @@ public class JustAHunch extends AbstractFortunoCard {
                             flash();
                             AbstractCard targeted = AbstractDungeon.player.drawPile.getBottomCard();
                             if (targeted.type == CardType.ATTACK) {
-                                att(new ApplyPowerAction(owner, owner, new StrengthPower(owner, amount), amount));
+                                att(new ApplyPowerAction(owner, owner, new StrengthPower(owner, x), x));
                             } else {
-                                att(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount), amount));
+                                att(new ApplyPowerAction(owner, owner, new DexterityPower(owner, x), x));
                             }
                             att(new ExhaustSpecificCardAction(targeted, AbstractDungeon.player.exhaustPile));
                         }

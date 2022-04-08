@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theGambler.actions.BottomToTopAction;
+import theGambler.actions.EasyModalChoiceAction;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,7 @@ public class CalledIt extends AbstractFortunoCard {
         cardsList.add(new EasyModalChoiceCard("Attack", "Guess the card at the bottom of your draw pile is an Attack.", () -> tar = CardType.ATTACK));
         cardsList.add(new EasyModalChoiceCard("Skill", "Guess the card at the bottom of your draw pile is a Skill.", () -> tar = CardType.SKILL));
         cardsList.add(new EasyModalChoiceCard("Power", "Guess the card at the bottom of your draw pile is a Power.", () -> tar = CardType.POWER));
+        atb(new EasyModalChoiceAction(cardsList));
         atb(new BottomToTopAction(p.drawPile));
         atb(new DrawCardAction(1, new AbstractGameAction() {
             @Override

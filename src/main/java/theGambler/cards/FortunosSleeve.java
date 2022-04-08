@@ -1,5 +1,6 @@
 package theGambler.cards;
 
+import basemod.AutoAdd;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -16,6 +17,7 @@ import static theGambler.FortunoMod.fortunosSleeve;
 import static theGambler.FortunoMod.makeID;
 import static theGambler.util.Wiz.*;
 
+@AutoAdd.Ignore
 public class FortunosSleeve extends AbstractFortunoCard {
     public final static String ID = makeID("FortunosSleeve");
     // intellij stuff skill, self, special, , , , , , 

@@ -12,8 +12,6 @@ import java.util.Iterator;
 
 public class BotdeckAction extends AbstractGameAction {
     private AbstractPlayer p;
-    private static final UIStrings uiStrings;
-    public static final String[] TEXT;
     private int numCards;
 
     public BotdeckAction(int numCards) {
@@ -35,7 +33,7 @@ public class BotdeckAction extends AbstractGameAction {
                     this.isDone = true;
                 }
             } else {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], numCards, false);
+                AbstractDungeon.handCardSelectScreen.open(" to put on the bottom of your draw pile.", numCards, false);
 
                 this.tickDuration();
             }
@@ -52,10 +50,5 @@ public class BotdeckAction extends AbstractGameAction {
 
             this.tickDuration();
         }
-    }
-
-    static {
-        uiStrings = CardCrawlGame.languagePack.getUIString("BotdeckAction");
-        TEXT = uiStrings.TEXT;
     }
 }

@@ -16,6 +16,7 @@ public class Mulligan extends AbstractFortunoCard {
     public Mulligan() {
         super(ID, 1, CardType.SKILL, CardRarity.UNCOMMON, CardTarget.SELF);
         baseMagicNumber = magicNumber = 1;
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

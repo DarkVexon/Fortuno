@@ -1,5 +1,6 @@
 package theGambler.cards;
 
+import basemod.cardmods.RetainMod;
 import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -23,7 +24,7 @@ public class SelfImprovement extends AbstractFortunoCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         atb(new SelectCardsInHandAction("to Self Improve.", (cards) -> {
             AbstractCard q = cards.get(0);
-            q.selfRetain = true;
+            CardModifierManager.addModifier(q, new RetainMod());
             CardModifierManager.addModifier(q, new DamageBlockUpMod(magicNumber));
         }));
     }

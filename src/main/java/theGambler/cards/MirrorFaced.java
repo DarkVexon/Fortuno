@@ -24,6 +24,7 @@ public class MirrorFaced extends AbstractFortunoCard {
         atb(new DrawCardAction(1, new AbstractGameAction() {
             @Override
             public void update() {
+                isDone = true;
                 for (AbstractCard q : DrawCardAction.drawnCards) {
                     AbstractCard q2 = q.makeStatEquivalentCopy();
                     if (upgraded) {

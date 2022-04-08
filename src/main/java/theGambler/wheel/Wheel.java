@@ -270,7 +270,7 @@ public class Wheel {
                 TipHelper.renderGenericTip((float) InputHelper.mX + 60.0F * Settings.scale, (float) InputHelper.mY - 50.0F * Settings.scale, "Slot " + idx, "Guarantee the Wheel lands on this slot next.");
                 if (InputHelper.justClickedLeft) {
                     AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DiamondDaggerPower(idx), idx));
-                    AbstractDungeon.actionManager.actions.get(0).isDone = true;
+                    AbstractDungeon.actionManager.currentAction.isDone = true;
                     choosingForDiamondDagger = false;
                 }
             }

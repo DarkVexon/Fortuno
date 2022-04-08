@@ -27,7 +27,7 @@ public class QuickFlip extends AbstractFortunoCard {
                 isDone = true;
                 for (int i = 0; i < magicNumber; i++) {
                     if (AbstractDungeon.player.drawPile.size() > i) {
-                        AbstractCard target = AbstractDungeon.player.drawPile.getNCardFromTop(AbstractDungeon.player.drawPile.size() - i);
+                        AbstractCard target = AbstractDungeon.player.drawPile.getNCardFromTop(AbstractDungeon.player.drawPile.size() - 1 - i);
                         target.upgrade();
                     }
                 }
