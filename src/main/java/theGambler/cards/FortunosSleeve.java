@@ -24,6 +24,8 @@ public class FortunosSleeve extends AbstractFortunoCard {
 
     public FortunosSleeve() {
         super(ID, 1, CardType.SKILL, CardRarity.SPECIAL, CardTarget.SELF, CardColor.COLORLESS);
+        selfRetain = true;
+        exhaust = true;
     }
 
     public void use(AbstractPlayer p, AbstractMonster m) {

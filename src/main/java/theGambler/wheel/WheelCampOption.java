@@ -8,11 +8,11 @@ import static theGambler.FortunoMod.ANTE;
 
 public class WheelCampOption extends AbstractCampfireOption {
 
-    public WheelCampOption() {
+    public WheelCampOption(boolean active) {
         this.label = "Ante";
         this.description = "Put a card with Ante from your deck into a Wheel slot.";
         this.img = TexLoader.getTexture("fortunoResources/images/ui/Upgrade.png");
-        usable = AbstractDungeon.player.masterDeck.group.stream().anyMatch(q -> q.hasTag(ANTE));
+        this.usable = active;
     }
 
     @Override

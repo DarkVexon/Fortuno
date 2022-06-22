@@ -38,6 +38,7 @@ public class OnTheHouse extends AbstractFortunoCard {
                 AbstractDungeon.player.masterDeck.removeCard(r);
             }
             Wheel.ante(q);
+            AbstractDungeon.handCardSelectScreen.selectedCards.removeCard(q);
         }));
     }
 

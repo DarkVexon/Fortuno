@@ -1,5 +1,6 @@
 package theGambler.cards;
 
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.AttackDamageRandomEnemyAction;
 import com.megacrit.cardcrawl.actions.common.GainGoldAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,7 +21,7 @@ public class Roulette extends AbstractFortunoCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < magicNumber; i++) {
-            atb(new AttackDamageRandomEnemyAction(this));
+            atb(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.LIGHTNING));
         }
         if (isHit()) {
             atb(new GainGoldAction(7));

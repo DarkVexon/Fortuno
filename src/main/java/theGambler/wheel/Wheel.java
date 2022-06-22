@@ -177,9 +177,11 @@ public class Wheel {
         for (int i = 0; i < hbs.size(); i++) {
             if (hbs.get(i).hovered) {
                 int idx = (int) ((i + Math.floor((wheelAngle / 45))) % (hbs.size()));
-                TipHelper.renderGenericTip((float) InputHelper.mX + 60.0F * Settings.scale, (float) InputHelper.mY - 50.0F * Settings.scale, "Slot " + idx, "Ante this card in this slot.");
-                for (AbstractCard q : slots.get(idx)) {
-                    q.render(sb);
+                if (idx >= 0 && idx < slots.size()) {
+                    TipHelper.renderGenericTip((float) InputHelper.mX + 60.0F * Settings.scale, (float) InputHelper.mY - 50.0F * Settings.scale, "Slot " + idx, "Ante this card in this slot.");
+                    for (AbstractCard q : slots.get(idx)) {
+                        q.render(sb);
+                    }
                 }
             }
         }

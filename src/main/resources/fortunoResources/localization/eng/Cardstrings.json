@@ -313,7 +313,7 @@
   },
   "${ModID}:FortunosSleeve":{
     "NAME": "Fortuno's Sleeve",
-    "DESCRIPTION": "Increase the damage and block of ALL cards in your sleeve by 2. NL Play a card in your sleeve, then return this to your hand."
+    "DESCRIPTION": "Retain. NL Increase the damage and block of ALL cards in your sleeve by 2. NL Play a card in your sleeve, then return this to your hand. NL Exhaust."
   },
   "${ModID}:FortunoCoin": {
     "NAME": "FortunoCoin!",

@@ -2,14 +2,13 @@ package theGambler.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theGambler.actions.DiamondDaggerAction;
-import theGambler.cards.AbstractFortunoCard;
 import theGambler.powers.DiamondDaggerPower;
-import theGambler.wheel.Wheel;
 
 import static theGambler.FortunoMod.makeID;
-import static theGambler.util.Wiz.*;
+import static theGambler.util.Wiz.atb;
 
 public class DiamondDagger extends AbstractFortunoCard {
     public final static String ID = makeID("DiamondDagger");
@@ -23,7 +22,8 @@ public class DiamondDagger extends AbstractFortunoCard {
 
     public void use(AbstractPlayer p, AbstractMonster m) {
         dmg(m, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-        atb(new DiamondDaggerAction());
+        if (!AbstractDungeon.player.hasPower(DiamondDaggerPower.ID))
+            atb(new DiamondDaggerAction());
     }
 
     @Override

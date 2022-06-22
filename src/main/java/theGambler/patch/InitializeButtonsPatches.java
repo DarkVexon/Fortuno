@@ -10,6 +10,8 @@ import theGambler.wheel.WheelCampOption;
 
 import java.util.ArrayList;
 
+import static theGambler.FortunoMod.ANTE;
+
 @SpirePatch(
         cls = "com.megacrit.cardcrawl.rooms.CampfireUI",
         method = "initializeButtons"
@@ -20,7 +22,7 @@ public class InitializeButtonsPatches {
         try {
             ArrayList<AbstractCampfireOption> campfireButtons = ReflectionHacks.getPrivate(campfire, CampfireUI.class, "buttons");
             if (AbstractDungeon.player instanceof FortunoCharacter) {
-                campfireButtons.add(new WheelCampOption());
+                campfireButtons.add(new WheelCampOption(AbstractDungeon.player.masterDeck.group.stream().anyMatch(q -> q.hasTag(ANTE))));
             }
         } catch (SecurityException | IllegalArgumentException e) {
             e.printStackTrace();
